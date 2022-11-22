@@ -337,21 +337,112 @@ function transferWaitors(data) {
 
 transferWaitors(restorantData);
 
-// function isAverageLunchPriceTrue(fDish, sDish, average) {
-//     if (fDish.price + sDish.price < +average.slice(0, -1)) {
-//         return 'Цена ниже средней';
-//     } else {
-//         return 'Цена выше средней';
-//     }
-// }
+function isAverageLunchPriceTrue(fDish, sDish, average) {
+    if (fDish.price + sDish.price < +average.slice(0, -1)) {
+        return 'Цена ниже средней';
+    } else {
+        return 'Цена выше средней';
+    }
+}
 
-// console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
+console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
 
-// function isOpen(prop) {
-//     let answer = '';
-//     !prop ? answer = 'Закрыто' : answer = 'Открыто';
+function isOpen(prop) {
+    let answer = '';
 
-//     return answer;
-// }
+	if (!prop) {
+		answer = 'Закрыто';
+	}
+	answer = 'Открыто';
 
-// console.log(isOpen(restorantData.openNow));
+    return answer;
+}
+
+console.log(isOpen(restorantData.openNow));
+
+
+
+
+
+function factorial(res) {
+    if (typeof(res) !== 'number' || !Number.isInteger(res)) {
+		return 'Введите правильное число';
+	} else if (res < 1) {
+		return 1;
+	} else if (res === 1) {
+		return res;
+	}
+
+	return res * factorial(res - 1);
+}
+
+factorial(5);
+
+
+
+
+function amountOfPages(summary){
+	let result = 0,
+		a = '';
+
+	for (let i = 1; i <= summary; i++) {
+		a += i;
+
+		if (a.length == summary) {
+			result = i;
+			break;
+		}
+	}
+	
+	return console.log(result);
+}
+
+amountOfPages(11);
+
+// 1234567891011121314151617
+// amountOfPages(5) => 5
+// amountOfPages(25) => 17
+// amountOfPages(1095) => 401   
+// amountOfPages(185) => 97
+
+
+
+
+function isPangram(string) {
+	const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'g', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'w', 'v', 'x', 'y', 'z'];
+	string.toLowerCase();
+
+	for (let i = 0; i < alphabet.length; i++) {
+		if (string.indexOf(alphabet[i]) === -1) {
+			return console.log(false);
+		}
+	}
+	return console.log(true);
+}
+
+isPangram('Hello world');
+// isPangram(«The quick brown fox jumps over the lazy dog») => true
+// isPangram(«Hello world») => false
+
+
+
+
+
+function deepCount(a){
+	let result = a.length;
+
+	for (let i = 0; i < a.length; i++) {
+		if (Array.isArray(a[i])) {
+			result += deepCount(a[i]);
+		}
+	}
+
+	return console.log(result);
+}
+
+deepCount(["1", 5, "3", ["10"]]);
+// deepCount([1, 5, 3]) => 3
+// deepCount(["1", 5, "3", ["10"]]) => 5 (Заметьте, что последний элемент был посчитан сам + его внутренность)
+// deepCount([1, 2, [3, 4, [5]]]) => 7
+// deepCount([]) => 0
+// deepCount([[[[[[[[[]]]]]]]]]) => 8
