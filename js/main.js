@@ -452,7 +452,7 @@ console.log(now);
 
 
 
-
+// Task on method array
 
 
 const films = [
@@ -529,3 +529,24 @@ const getTotalIncomeAmount = (data) => {
 };
 
 console.log(getTotalIncomeAmount(funds));
+
+
+
+
+// getters setters
+
+const person = {
+	name: 'Alex',
+	age: 36,
+
+	get userAge() {
+		return this.age + 3;
+	},
+
+	set userAge(num) {
+		this.age = num;
+	}
+};
+
+console.log(person.userAge = 4);
+console.log(person.userAge);
