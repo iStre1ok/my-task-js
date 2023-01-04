@@ -409,7 +409,8 @@ amountOfPages(11);
 
 
 function isPangram(string) {
-	const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'g', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'w', 'v', 'x', 'y', 'z'];
+	const alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'g', 'k', 'l',
+	 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'w', 'v', 'x', 'y', 'z'];
 	string.toLowerCase();
 
 	for (let i = 0; i < alphabet.length; i++) {
@@ -550,3 +551,52 @@ const person = {
 
 console.log(person.userAge = 4);
 console.log(person.userAge);
+
+
+
+
+// incapsulation
+
+
+class User {
+	constructor (name, age) {
+		this.name = name;
+		this._age = age;
+	}
+
+	#surname = 'Ivanov';
+
+	say() {
+		console.log(`Hello ${this.name} ${this.#surname}, your years old ${this._age}`);
+	}
+
+	get age() {
+		return this._age;
+	}
+
+	set age(age) {
+		if (typeof age === 'number' && age > 0 && age < 110) {
+			this._age = age;
+		} else {
+			console.log('Неправильные данные');
+		}
+	}
+
+	get surname() {
+		return this.#surname;
+	}
+
+	set surname(surname) {
+		if (typeof surname === 'string') {
+			this.#surname = surname;
+		} else {
+			console.log('Похоже ввели цифры');
+		}
+	}
+}
+
+const ivan = new User('Alex', 36);
+
+ivan.say();
+
+console.log(ivan.surname = 'Bogdan');
