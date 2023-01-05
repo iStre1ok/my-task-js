@@ -564,10 +564,10 @@ class User {
 		this._age = age;
 	}
 
-	#surname = 'Ivanov';
+//комм от ошибки #surname = 'Ivanov';
 
 	say() {
-		console.log(`Hello ${this.name} ${this.#surname}, your years old ${this._age}`);
+//комм от ошибки		console.log(`Hello ${this.name} ${this.#surname}, your years old ${this._age}`);
 	}
 
 	get age() {
@@ -583,12 +583,12 @@ class User {
 	}
 
 	get surname() {
-		return this.#surname;
+//комм от ошибки		return this.#surname;
 	}
 
 	set surname(surname) {
 		if (typeof surname === 'string') {
-			this.#surname = surname;
+//комм от ошибки			this.#surname = surname;
 		} else {
 			console.log('Похоже ввели цифры');
 		}
@@ -600,3 +600,19 @@ const ivan = new User('Alex', 36);
 ivan.say();
 
 console.log(ivan.surname = 'Bogdan');
+
+
+
+// webpack
+
+function myModule() {
+	this.hello = function() {
+		console.log('Hello');
+	};
+
+	this.goodbye = function() {
+		console.log('Goodbye!');
+	};
+}
+
+module.exports = myModule;
